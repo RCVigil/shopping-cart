@@ -12,6 +12,8 @@ const createCustomElement = (element, className, innerText) => {
   return e;
 };
 
+const itemSection = document.querySelector('.items');
+
 const createProductItemElement = ({ sku, name, image }) => {
   const section = document.createElement('section');
   section.className = 'item';
@@ -20,15 +22,32 @@ const createProductItemElement = ({ sku, name, image }) => {
   section.appendChild(createCustomElement('span', 'item__title', name));
   section.appendChild(createProductImageElement(image));
   section.appendChild(createCustomElement('button', 'item__add', 'Adicionar ao carrinho!'));
+  itemSection.appendChild(section);
 
   return section;
 };
+
+const adicProdutos = async () => {
+  const prodObjeto = await fetchProducts();
+  const sku = prodObjeto.results.map((elem) => {
+    const produto = {
+      sku: elem.id,
+      name: elem.title,
+      image: elem.thumbnail,
+    };
+    return produto;
+  });
+  sku.forEach((productIn) => {
+    createProductItemElement(productIn);
+  });
+
+}
 
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
 const cartItemClickListener = (event) => {
   // coloque seu código aqui
-  
+
 };
 
 const createCartItemElement = ({ sku, name, salePrice }) => {
@@ -39,4 +58,6 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
   return li;
 };
 
+
+adicProdutos();
 window.onload = () => { };
