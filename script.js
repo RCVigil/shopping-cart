@@ -30,8 +30,6 @@ const createProductItemElement = ({ sku, name, image }) => {
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
 const cartItemClickListener = (event) => {
-  // coloque seu código aqui
-  // saveCartItems();
   event.target.remove();
 };
 
@@ -50,8 +48,6 @@ const clicado = async (evento) => {
 
   const olCar = document.body.querySelector('.cart__items');
   olCar.appendChild(createCartItemElement(prodCar));
-
-  console.log(saveCartItems());
 };
 
 function captButt() {
@@ -60,7 +56,23 @@ function captButt() {
     elem.addEventListener('click', clicado);
   });
 }
+
+function carInic() {
+  const inicCarreg = document.querySelector('.items');
+  const tagCarregando = document.createElement('p');
+  tagCarregando.className = 'loading';
+  tagCarregando.innerText = 'carregando...';
+  inicCarreg.appendChild(tagCarregando);
+  return tagCarregando;
+}
+
+function carEnd() {
+  const tagEndCarreg = document.querySelector('.items').firstChild.remove();
+  return tagEndCarreg;
+}
+
 const adicProdutos = async () => {
+  carInic();
   const prodObjeto = await fetchProducts('computador');
   const sku = prodObjeto.results.map((elem) => {
     const produto = {
@@ -73,10 +85,12 @@ const adicProdutos = async () => {
   sku.forEach((productIn) => {
     createProductItemElement(productIn);
   });
+  carEnd();
   captButt();
 };
 
 async function clearCart() {
+  // BOTÃO ESVAZIAR CARRINHO
   const carClearV = document.querySelector('.empty-cart');
   await carClearV.addEventListener('click', () => {
     document.querySelectorAll('.cart__item').forEach((e) => e.remove());
