@@ -1,5 +1,4 @@
 const olCar = document.querySelector('.cart__items');
-
 const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
   img.className = 'item__image';
@@ -30,16 +29,13 @@ const createProductItemElement = ({ sku, name, image }) => {
   return section;
 };
 
-// const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
+const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
 const arred = (sum) => Math.round(((sum)) * 100) / 100; 
 
 const sumCar = () => {
   // FUNÇÃO PARA SOMAR O TOTAL DA COMPRA
   const purchaseElem = document.querySelectorAll('.cart__item');
-  // const divTot = document.createElement('div');
-  // divTot.className = 'total-price';
-  // divTot.appendChild(document.querySelector('ol .cart__items'));
   const totEspaco = document.querySelector('.total-price');
   let totalSum = 0;
   purchaseElem.forEach((elem) => {
