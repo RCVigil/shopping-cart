@@ -130,12 +130,14 @@ body {
 .cart {
   display: flex;
   flex-basis: 32%;
+  height: 60%;
   flex-flow: column wrap;
   background-color: rgb(241, 241, 238);
   height: 100vh;
 }
 
 .cart .cart__items {
+  background-color: rgba(99, 235, 124, 0.101);
   height: 500px;
   overflow-y: scroll;
 }
@@ -149,14 +151,59 @@ body {
 }
 
 .total-price {
-  width: 170px;
-  height: 40px;
+  width: 75%;
+  height: 7%;
+  line-height: 50%;
   border-radius: 7px;
-  margin: 0 0 20px;
-  border: 3px solid green;
-  background-color: rgba(80, 235, 8, 0.284);
+  margin: 0 auto;
+  margin-bottom: 5%;
+  margin-top: 3%;
+  border: 3px solid rgb(10, 118, 79);
+  background-color: rgba(80, 235, 8, 0.195);
   color: black;
-  padding-top: 7px;
-  font-size: 27px;
-  justify-content: center;
+  padding-top: 5%;
+  font-size: 23px;
+  text-align: center;
+  font-variant: small-caps;
+  font-weight: 600;
+}
+
+.carrinho {
+  width: 100%;
+  background-color: rgba(5, 202, 31, 0.398);
+  height: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+}
+
+.linhaItem {
+  font-size: 17px;
+  text-align: justify;
+  border-bottom: 5px solid rgba(255, 4, 4, 0.17);
+  padding: 15px 0;
+}
+
+.cart__items :hover {
+  font-family: Georgia, Times New Roman, Times, serif;
+  font-size: 22px;
+  background-color: rgba(235, 166, 87, 0.516);
+  margin: 0 auto;
+}
+
+.item:hover {
+  font-family: Georgia, Times New Roman, Times, serif;
+  background-color: rgba(235, 166, 87, 0.516);
+  border: 3px solid rgb(10, 118, 79);
+}
+
+.empty-cart:hover {
+  font-family: Georgia, Times New Roman, Times, serif;
+  font-size: 22px;
+  background-color: rgb(5, 52, 219);
+  color: #F2A824;
+  width: 250px;
+  height: 70px;
+  font-weight: 800;
+  margin: 0 auto;
 }

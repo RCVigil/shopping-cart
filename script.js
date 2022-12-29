@@ -43,7 +43,7 @@ const sumCar = () => {
     totalSum += elemComp;
     arred(totalSum);
   });
-  totEspaco.innerText = (totalSum);
+  totEspaco.innerText = (`To pay $ ${totalSum.toFixed(2)}`);
 
   return totalSum;
 };
@@ -59,7 +59,7 @@ const createCartItemElement = ({ id: sku, title: name, price: salePrice }) => {
   // FUNÇÃO QUE CRIA OS ELEMENTOS QUE FORAM COMPRADOS, ADICIONA NO CARRINHO
   getSavedCartItems();
   const li = document.createElement('li');
-  li.className = 'cart__item';
+  li.className = 'cart__item linhaItem';
   li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
   li.addEventListener('click', cartItemClickListener);
   return li;
